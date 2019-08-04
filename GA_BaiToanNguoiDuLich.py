@@ -1,4 +1,4 @@
-# Phát biểu bài toán: có 5 thành phố được nối với nhau
+# Phát biểu bài toán: có 5 thành phố được đánh số từ 1 đến 5 được nối với nhau
 # một người muốn đi từ 1 thành phố, qua tất cả các thành phố khác và trở về thành phố ban đầu
 # với chi phí nhỏ nhất. Hãy thiết lập tuyến đường cho người này.
 
