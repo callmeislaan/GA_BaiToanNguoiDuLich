@@ -5,12 +5,13 @@
 # dữ liệu mô tả các thành phố và chi phí giữa chúng là một mảng 2 chiều
 # dòng và cột đầu tiên là tên các thành phố
 # các giá trị còn lại biểu diễn chi phí đi lại của hai thành phố tương ứng
+# với những thành phố không nối trực tiếp với nhau, ta cho chi phí là một số lớn
 
 # hiểu thêm bài toán: https://vi.wikipedia.org/wiki/B%C3%A0i_to%C3%A1n_ng%C6%B0%E1%BB%9Di_b%C3%A1n_h%C3%A0ng
 import random
 
 n = 5   # so luong thanh pho
-m = 6 # so luong ca the trong quan the
+m = 100 # so luong ca the trong quan the
 n_generations = 100 # so vong doi
 losses = []  # de ve bieu de losses
 
