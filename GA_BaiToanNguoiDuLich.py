@@ -1,7 +1,12 @@
-# Phát biểu bài toán: có n thành phố và m tuyến đường nối với các thành phố
-# một người muốn đi từ thành phố 1 và qua tất cả các thành phố và trở về thành phố ban đầu
+# Phát biểu bài toán: có 5 thành phố được nối với nhau
+# một người muốn đi từ 1 thành phố, qua tất cả các thành phố khác và trở về thành phố ban đầu
 # với chi phí nhỏ nhất. Hãy thiết lập tuyến đường cho người này.
 
+# dữ liệu mô tả các thành phố và chi phí giữa chúng là một mảng 2 chiều
+# dòng và cột đầu tiên là tên các thành phố
+# các giá trị còn lại biểu diễn chi phí đi lại của hai thành phố tương ứng
+
+# hiểu thêm bài toán: https://vi.wikipedia.org/wiki/B%C3%A0i_to%C3%A1n_ng%C6%B0%E1%BB%9Di_b%C3%A1n_h%C3%A0ng
 import random
 
 n = 5   # so luong thanh pho
@@ -14,10 +19,10 @@ def load_data():
     map = []
     file = open('data_route.txt', 'r')
     lines = file.readlines()
-    for line in lines:
-        strings = line.split(',')
-        citys = [int(s.strip()) for s in strings]
-        map.append(citys)
+    for i in range(1, len(lines)):
+        strings = lines[i].split(',')
+        prices = [int(s.strip()) for s in strings[1:]]
+        map.append(prices)
     file.close()
     return map
 
@@ -26,7 +31,7 @@ map = load_data()
 # tao individual
 def create_individual():
     list = []  # list cac thanh pho
-    for i in range(n):
+    for i in range(1, n+1):
         list.append(i)
     random.shuffle(list)
     return list
@@ -36,13 +41,13 @@ def compute_loss(individual):
     i = 0
     price = 0
     while i < n-1:
-        a = individual[i]
-        b = individual[i+1]
+        a = individual[i] - 1
+        b = individual[i+1] - 1
         price += map[a][b]
         i += 1
     # cong voi quang duong tp cuoi ve tp dau
-    start = individual[0]
-    finish = individual[n-1]
+    start = individual[0] - 1
+    finish = individual[n-1] - 1
     price += map[finish][start]
     return price
 
